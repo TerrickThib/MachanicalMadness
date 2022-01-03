@@ -10,12 +10,13 @@
 void MainScene::start()
 {
 	//Declares player, sets scale and adds Collider
-	Player* player = new Player(50, 50, "Player");	
+	Player* player = new Player(50, 50, "Player");
 	addActor(player);
 
-	//Adds Enemy
+	//Adds Enemy and Targets the Player
 	Enemy* test = new Enemy(500, 50, "Enemy", "Rusher");
 	addActor(test);
+	test->setTarget(player);
 
 	//Adds goal
 	Actor* goal = new Actor(50, 500, "Goal");

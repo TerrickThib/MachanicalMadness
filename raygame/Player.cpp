@@ -15,8 +15,8 @@ void Player::start()
 	m_moveComponent->setMaxSpeed(10);
 	m_spriteComponent = dynamic_cast <SpriteComponent*>(addComponent(new SpriteComponent("Images/Robi.png")));
 
-	getTransform()->setScale({ 70,35 });
-	setCollider(new AABBCollider(70,35,this));
+	getTransform()->setScale({ 35,70 });
+	setCollider(new AABBCollider(this));
 	//Set spawn point
 	//Set Move speed
 	//Set position clamps
@@ -29,6 +29,8 @@ void Player::update(float deltaTime)
 	MathLibrary::Vector2 moveDirection = m_inputComponent->getMoveAxis();
 
 	m_moveComponent->setVelocity(moveDirection * 200);
+	if(moveDirection.getMagnitude() != 0)
+	getTransform()->setForward(moveDirection);
 }
 
 void Player::onCollision(Actor* other)
