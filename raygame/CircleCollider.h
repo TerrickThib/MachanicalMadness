@@ -29,6 +29,8 @@ public:
 	/// <param name="otherCollider">The other collider to check collision against</param>
 	bool checkCollisionAABB(AABBCollider* otherCollider) override;
 
+	void draw() override;
+
 private:
 	float m_collisionRadius;
 };
