@@ -12,11 +12,11 @@ public:
 
 	void start() override;
 	void update(float deltaTime) override;
+	void onCollision(Actor* other) override;
 
 private:
 	InputComponent* m_inputComponent;
 	MoveComponent* m_moveComponent;
 	SpriteComponent* m_spriteComponent;
-
 };
 

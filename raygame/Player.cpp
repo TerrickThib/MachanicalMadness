@@ -2,6 +2,8 @@
 #include "InputComponent.h"
 #include "MoveComponent.h"
 #include "SpriteComponent.h"
+#include "Engine.h"
+
 
 void Player::start()
 {
@@ -24,4 +26,10 @@ void Player::update(float deltaTime)
 	MathLibrary::Vector2 moveDirection = m_inputComponent->getMoveAxis();
 
 	m_moveComponent->setVelocity(moveDirection * 200);
+}
+
+void Player::onCollision(Actor* other)
+{
+	if (other->getName() == "Goal")
+		Engine::CloseApplication();
 }
