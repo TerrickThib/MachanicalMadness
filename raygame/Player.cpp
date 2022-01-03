@@ -16,7 +16,7 @@ void Player::start()
 	m_spriteComponent = dynamic_cast <SpriteComponent*>(addComponent(new SpriteComponent("Images/Robi.png")));
 
 	getTransform()->setScale({ 70,35 });
-	setCollider(new AABBCollider(35,12.5f,this));
+	setCollider(new AABBCollider(70,35,this));
 	//Set spawn point
 	//Set Move speed
 	//Set position clamps
@@ -37,4 +37,11 @@ void Player::onCollision(Actor* other)
 		Engine::CloseApplication();
 	if(other->getName() == "Enemy")
 		Engine::CloseApplication();
+}
+
+void Player::draw()
+{
+	Actor::draw();
+	if (IsKeyDown(KEY_TAB))
+		getCollider()->draw();	
 }

@@ -2,6 +2,7 @@
 #include "CircleCollider.h"
 #include "Actor.h"
 #include "Transform2D.h"
+#include "raylib.h"
 
 AABBCollider::AABBCollider(Actor* owner) : Collider::Collider(owner, ColliderType::BOX)
 {
@@ -59,4 +60,9 @@ bool AABBCollider::checkCollisionAABB(AABBCollider* collider)
 		return true;
 
 	return false;
+}
+
+void AABBCollider::draw()
+{
+	RAYLIB_H::DrawRectangleLines(getLeft(),getTop(), m_width, m_height, RED);
 }

@@ -4,6 +4,7 @@
 #include "Transform2D.h"
 #include "AABBCollider.h"
 #include "CircleCollider.h"
+#include "raylib.h"
 
 void Enemy::start()
 {
@@ -15,7 +16,7 @@ void Enemy::start()
 	{
 		m_spriteComponent = dynamic_cast <SpriteComponent*>(addComponent(new SpriteComponent("Images/MDU-Rusher.png")));
 		getTransform()->setScale({ 25,25 });
-		setCollider(new CircleCollider(5, this));
+		setCollider(new CircleCollider(10, this));
 	}
 	
 	else if (m_type == "Gunner")
@@ -38,4 +39,11 @@ void Enemy::update(float deltaTime)
 
 void Enemy::onCollision(Actor* other)
 {
+}
+
+void Enemy::draw()
+{
+	Actor::draw();
+	if (IsKeyDown(KEY_TAB))
+		getCollider()->draw();
 }
