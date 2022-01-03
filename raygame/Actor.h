@@ -109,10 +109,7 @@ public:
     /// </summary>
     /// <param name="other">The actor this actor collided with.</param>
     virtual void onCollision(Actor* other);
-  
-    int forward;
-    void getForward() {  m_forward; }
-    void setForward() { m_forward = forward; }
+     
 protected:
     const char* m_name;
 
@@ -122,7 +119,7 @@ private:
     Collider* m_collider;
     Component** m_components;
     unsigned int m_componentCount;
-    int m_forward;
+    
     //unsigned says that it cant be a negative
 };
 
