@@ -5,14 +5,17 @@
 #include "AABBCollider.h"
 #include "Transform2D.h"
 #include "Player.h"
+#include "Enemy.h"
 
 void MainScene::start()
 {
 	//Declares player, sets scale and adds Collider
 	Player* player = new Player(50, 50, "Player");	
-	player->getTransform()->setScale({ 50,50 });
-	player->setCollider(new AABBCollider(player));
 	addActor(player);
+
+	//Adds Enemy
+	Enemy* test = new Enemy(500, 50, "Enemy", "Rusher");
+	addActor(test);
 
 	//Adds goal
 	Actor* goal = new Actor(50, 500, "Goal");

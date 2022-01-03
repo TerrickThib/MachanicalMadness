@@ -3,7 +3,8 @@
 #include "MoveComponent.h"
 #include "SpriteComponent.h"
 #include "Engine.h"
-
+#include "Transform2D.h"
+#include "AABBCollider.h"
 
 void Player::start()
 {
@@ -12,8 +13,10 @@ void Player::start()
 	m_inputComponent = dynamic_cast<InputComponent*>(addComponent(new InputComponent()));
 	m_moveComponent = dynamic_cast<MoveComponent*>(addComponent(new MoveComponent()));
 	m_moveComponent->setMaxSpeed(10);
-	m_spriteComponent = dynamic_cast <SpriteComponent*>(addComponent(new SpriteComponent("Images/player.png")));
+	m_spriteComponent = dynamic_cast <SpriteComponent*>(addComponent(new SpriteComponent("Images/Robi.png")));
 
+	getTransform()->setScale({ 70,35 });
+	setCollider(new AABBCollider(35,12.5f,this));
 	//Set spawn point
 	//Set Move speed
 	//Set position clamps
@@ -31,5 +34,7 @@ void Player::update(float deltaTime)
 void Player::onCollision(Actor* other)
 {
 	if (other->getName() == "Goal")
+		Engine::CloseApplication();
+	if(other->getName() == "Enemy")
 		Engine::CloseApplication();
 }
