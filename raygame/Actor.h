@@ -1,7 +1,9 @@
 #pragma once
-class Transform2D;
+#include "Transform2D.h"
+#include "MoveComponent.h"
 class Collider;
 class Component;
+class Vector2;
 
 class Actor
 {
@@ -25,7 +27,7 @@ public:
     /// <summary>
     /// Gets the collider attached to this actor
     /// </summary>
-    Collider* getCollider() { return m_collider; }
+    Collider* getCollider() { return m_collider; }   
 
     /// <summary>
     /// Sets this actors collider
@@ -119,6 +121,7 @@ private:
     Collider* m_collider;
     Component** m_components;
     unsigned int m_componentCount;
+    Transform2D* m_forward;
     
     //unsigned says that it cant be a negative
 };

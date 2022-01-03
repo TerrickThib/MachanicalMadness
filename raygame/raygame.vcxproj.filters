@@ -29,9 +29,6 @@
     <ClCompile Include="Engine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Collider.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Transform2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -65,6 +62,9 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Collider.cpp">
+      <Filter>Colliders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene.h">
@@ -74,9 +74,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Collider.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Transform2D.h">
@@ -111,6 +108,9 @@
     </ClInclude>
     <ClInclude Include="Enemy.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider.h">
+      <Filter>Colliders</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
