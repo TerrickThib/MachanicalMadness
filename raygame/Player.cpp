@@ -29,8 +29,6 @@ void Player::update(float deltaTime)
 	MathLibrary::Vector2 moveDirection = m_inputComponent->getMoveAxis();
 
 	m_moveComponent->setVelocity(moveDirection * 200);
-	if(moveDirection.getMagnitude() != 0)
-	getTransform()->setForward(moveDirection);
 }
 
 void Player::onCollision(Actor* other)
