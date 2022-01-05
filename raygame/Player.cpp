@@ -14,6 +14,8 @@ void Player::start()
 	m_moveComponent = dynamic_cast<MoveComponent*>(addComponent(new MoveComponent()));
 	m_moveComponent->setMaxSpeed(10);
 	m_spriteComponent = dynamic_cast <SpriteComponent*>(addComponent(new SpriteComponent("Images/Robi.png")));
+	m_moveComponent->setSpeed(2);
+	m_moveComponent->setCurrentSpeed(1);
 
 	getTransform()->setScale({ 35,70 });
 	setCollider(new AABBCollider(this));
@@ -28,7 +30,20 @@ void Player::update(float deltaTime)
 
 	MathLibrary::Vector2 moveDirection = m_inputComponent->getMoveAxis();
 
-	m_moveComponent->setVelocity(moveDirection * 200);
+	//Multiplys the movedirection with current speed to get Velocity
+	m_moveComponent->setVelocity(moveDirection * m_moveComponent->getCurrentSpeed());
+
+	while (m_moveComponent->getVelocity().getMagnitude() <= m_moveComponent->getMaxSpeed())
+	{
+		m_moveComponent->setCurrentSpeed( m_moveComponent->getCurrentSpeed() + m_moveComponent->getSpeed());
+		return;
+	}
+
+	if (m_moveComponent->getVelocity().getMagnitude() >= m_moveComponent->getMaxSpeed())
+	{
+		m_moveComponent->setVelocity(moveDirection * m_moveComponent->getMaxSpeed());
+	}
+
 }
 
 void Player::onCollision(Actor* other)
