@@ -44,24 +44,12 @@ public:
 	/// <param name="maxSpeed"></param>
 	void setSpeed(float speed) { m_speed = speed; }
 
-	/// <summary>
-	/// Get the current speed of this actors velocity vector
-	/// </summary>
-	/// <returns></returns>
-	float getCurrentSpeed() { return m_currentspeed; }
-
-	/// <summary>
-	/// Set the current speed of this actors velocity vector
-	/// </summary>
-	/// <param name="maxSpeed"></param>
-	void setCurrentSpeed(float currentspeed) { m_currentspeed = currentspeed; }
-
 	void update(float deltaTime) override;
 
 private:
 	MathLibrary::Vector2 m_velocity;
 	float m_maxSpeed;
 	float m_speed;
-	float m_currentspeed;
+	MathLibrary::Vector2 m_accelration;
 };
 
