@@ -54,7 +54,12 @@ public:
     /// <returns>False if the actor is a nullptr or isn't in the array.</returns>
     bool removeActor(Actor* actor);
 
-
+    /// <summary>
+    /// Gets a Specific Actor in the array
+    /// </summary>
+    /// <param name="index">The index the actor is in the scene's array.</param>
+    /// <returns>The desired actor.</returns>
+    Actor* getActor(int index);
 
     virtual void start();
 

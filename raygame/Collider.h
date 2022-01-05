@@ -8,12 +8,14 @@ enum ColliderType
 class Actor;
 class CircleCollider;
 class AABBCollider;
+#include "Transform2D.h"
 
 class Collider
 {
 public:
 	Collider() {};
 	Collider(Actor* owner, ColliderType type) { m_owner = owner;  m_type = type; }
+	Collider(float x, float y, Actor* owner, ColliderType type) { m_transform->setLocalPosition({ x,y }), m_owner = owner;  m_type = type; }
 
 	/// <summary>
 	/// Gets the owner of this collider
@@ -35,10 +37,12 @@ public:
 
 	virtual bool checkCollisionCircle(CircleCollider* collider) { return false; }
 	virtual bool checkCollisionAABB(AABBCollider* collider) { return false; }
+	virtual void update() {}
 	virtual void draw() {}
 
 private:
 	Actor* m_owner;
 	ColliderType m_type;
+	Transform2D* m_transform;
 };
 

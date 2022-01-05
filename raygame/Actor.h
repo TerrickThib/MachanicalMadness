@@ -110,6 +110,7 @@ public:
     /// <param name="other">The actor this actor collided with.</param>
     virtual void onCollision(Actor* other);
   
+    void LookAt();
 protected:
     const char* m_name;
 

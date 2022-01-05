@@ -170,6 +170,9 @@ void Actor::update(float deltaTime)
 
         m_components[i]->update(deltaTime);
     }
+
+    if (m_collider != nullptr)
+        m_collider->update();
 }
 
 void Actor::draw()

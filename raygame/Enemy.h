@@ -14,9 +14,11 @@ public:
 	void onCollision(Actor* other) override;
 	void draw() override;
 
+	void setTarget(Actor* target) { m_target = target; }
 private:
 	MoveComponent* m_moveComponent;
 	SpriteComponent* m_spriteComponent;
 	const char* m_type;
+	Actor* m_target;
 };
 

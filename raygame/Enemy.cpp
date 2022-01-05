@@ -35,6 +35,11 @@ void Enemy::start()
 
 void Enemy::update(float deltaTime)
 {
+	Actor::update(deltaTime);
+
+	MathLibrary::Vector2 moveDirection = (m_target->getTransform()->getWorldPosition() - getTransform()->getWorldPosition()).getNormalized();
+	getTransform()->setForward(moveDirection);
+	m_moveComponent->setVelocity(moveDirection * 50);
 }
 
 void Enemy::onCollision(Actor* other)
