@@ -65,8 +65,8 @@ bool AABBCollider::checkCollisionAABB(AABBCollider* collider)
 
 void AABBCollider::update()
 {
-	m_width = getOwner()->getTransform()->getScale().x *  std::abs(getOwner()->getTransform()->getForward().x + 1);
-	m_height = getOwner()->getTransform()->getScale().y * std::abs(getOwner()->getTransform()->getForward().y + 1);
+	m_width = getOwner()->getTransform()->getScale().x;
+	m_height = getOwner()->getTransform()->getScale().y;
 }
 
 void AABBCollider::draw()

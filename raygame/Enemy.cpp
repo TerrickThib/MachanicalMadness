@@ -1,4 +1,5 @@
 #include "Enemy.h"
+#include "Engine.h"
 #include "MoveComponent.h"
 #include "SpriteComponent.h"
 #include "Transform2D.h"
@@ -44,6 +45,11 @@ void Enemy::update(float deltaTime)
 
 void Enemy::onCollision(Actor* other)
 {
+	if (other->getName() == "Sword")
+	{
+		Engine::destroy(this);
+	}
+
 }
 
 void Enemy::draw()

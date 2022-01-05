@@ -8,7 +8,6 @@ class Enemy :
 {
 public:
 	Enemy(float x, float y, const char* name, const char* type) : Actor(x, y, name) { m_type = type; }
-
 	void start() override;
 	void update(float deltaTime) override;
 	void onCollision(Actor* other) override;

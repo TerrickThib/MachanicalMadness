@@ -3,6 +3,7 @@
 class InputComponent;
 class MoveComponent;
 class SpriteComponent;
+class SwordComponent;
 
 class Player :
 	public Actor
@@ -19,5 +20,6 @@ private:
 	InputComponent* m_inputComponent;
 	MoveComponent* m_moveComponent;
 	SpriteComponent* m_spriteComponent;
+	SwordComponent* m_swordComponent;
 };
 

@@ -1,6 +1,6 @@
 #pragma once
 #include "Transform2D.h"
-#include "MoveComponent.h"
+#include "ActorArray.h"
 class Collider;
 class Component;
 class Vector2;
