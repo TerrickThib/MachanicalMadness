@@ -14,13 +14,13 @@ void Player::start()
 	m_moveComponent = dynamic_cast<MoveComponent*>(addComponent(new MoveComponent()));
 	m_moveComponent->setMaxSpeed(200);
 	m_spriteComponent = dynamic_cast <SpriteComponent*>(addComponent(new SpriteComponent("Images/Robi.png")));
-	m_moveComponent->setSpeed(100);
 
 	getTransform()->setScale({ 35,70 });
 	setCollider(new AABBCollider(this));
 	//Set spawn point
-	//Set Move speed
 	//Set position clamps
+	m_moveComponent->setSpeed(200);
+
 }
 
 void Player::update(float deltaTime)
