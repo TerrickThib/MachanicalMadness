@@ -1,7 +1,9 @@
 #pragma once
-class Transform2D;
+#include "Transform2D.h"
+#include "MoveComponent.h"
 class Collider;
 class Component;
+class Vector2;
 
 class Actor
 {
@@ -13,7 +15,7 @@ public:
     /// <param name="y">Position on the y axis</param>
     /// <param name="name">The name of this actor.</param>
     Actor(float x, float y, const char* name);
-
+    
     /// <summary>
     /// </summary>
     /// <returns>If the actors start function has been called.</returns>
@@ -25,7 +27,7 @@ public:
     /// <summary>
     /// Gets the collider attached to this actor
     /// </summary>
-    Collider* getCollider() { return m_collider; }
+    Collider* getCollider() { return m_collider; }   
 
     /// <summary>
     /// Sets this actors collider
@@ -110,7 +112,6 @@ public:
     /// <param name="other">The actor this actor collided with.</param>
     virtual void onCollision(Actor* other);
   
-    void LookAt();
 protected:
     const char* m_name;
 
@@ -120,6 +121,8 @@ private:
     Collider* m_collider;
     Component** m_components;
     unsigned int m_componentCount;
+    Transform2D* m_forward;
+    
     //unsigned says that it cant be a negative
 };
 
