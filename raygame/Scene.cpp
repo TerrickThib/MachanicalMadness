@@ -55,6 +55,17 @@ bool Scene::removeActor(Actor* actor)
     return m_actors.removeActor(actor);
 }
 
+Actor* Scene::getActor(int index)
+{
+    //Check to see if the index is outside the bounds of our array
+    if (index < 0 || index >= m_actorCount)
+    {
+        return nullptr;
+    }
+
+    return getActor(index);
+}
+
 void Scene::start()
 {
     m_started = true;
