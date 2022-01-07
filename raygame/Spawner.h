@@ -10,6 +10,9 @@ public:
 	Spawner(float x, float y, const char* name, Player* player) : Actor(x, y, name) { m_currentplayer = player; }
 	~Spawner();
 
+	float getnumberofenemies() { return m_numberofenemies; }
+	void setnumberofenemies() { m_numberofenemies = m_numberofenemies; }
+
 	void update(float deltaTime) override;
 
 private:

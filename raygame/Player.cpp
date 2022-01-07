@@ -56,7 +56,7 @@ void Player::onCollision(Actor* other)
 		Engine::CloseApplication();
 	if(other->getName() == "Enemy")
 		Engine::CloseApplication();
-	if (other->getName() == "Sword")
+	if (other->getName() == "Sword" && m_swordComponent->getSword() != other)
 	{
 		Engine::CloseApplication();
 	}
