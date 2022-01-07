@@ -52,6 +52,7 @@ void SwordComponent::draw()
 
 void SwordComponent::end()
 {
+	Engine::getCurrentScene()->removeActor(m_sword);
 }
 
 void SwordComponent::onCollision(Actor* other)

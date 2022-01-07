@@ -38,25 +38,30 @@ void Enemy::start()
 
 void Enemy::update(float deltaTime)
 {
-	Actor::update(deltaTime);
+	if (m_type == "Sword" && !m_swordComponent->getInUse() || m_type != "Sword")
+	{
+		Actor::update(deltaTime);
 
-	MathLibrary::Vector2 moveDirection = (m_target->getTransform()->getWorldPosition() - getTransform()->getWorldPosition()).getNormalized();
-	getTransform()->setForward(moveDirection);
-	m_moveComponent->setVelocity(moveDirection * 50);
-
+		MathLibrary::Vector2 moveDirection = (m_target->getTransform()->getWorldPosition() - getTransform()->getWorldPosition()).getNormalized();
+		getTransform()->setForward(moveDirection);
+		m_moveComponent->setVelocity(moveDirection * 50);
+	}
+	
 	if (m_type == "Sword" && (getTransform()->getWorldPosition() - m_target->getTransform()->getWorldPosition()).getMagnitude() < 100 && !m_swordComponent->getInUse())
 	{
 		m_swordComponent->swingSword();
 	}
+
+	if(m_type == "Sword")
+	m_swordComponent->update(deltaTime);
 }
 
 void Enemy::onCollision(Actor* other)
 {
-	if (other->getName() == "Sword" && m_swordComponent->getSword() != other)
-	{
+	if (other->getName() == "Sword" && m_type != "Sword")
 		Engine::destroy(this);
-	}
-
+	else if (other->getName() == "Sword" && m_swordComponent->getSword() != other)
+		Engine::destroy(this);
 }
 
 void Enemy::draw()
