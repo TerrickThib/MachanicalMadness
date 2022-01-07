@@ -1,12 +1,13 @@
 #pragma once
 #include "Actor.h"
 #include "Transform2D.h"
+class Player;
 
 class Spawner:
 	public Actor
 {
 public:	
-	Spawner(float x, float y, const char* name = "Actor");
+	Spawner(float x, float y, const char* name, Player* player) : Actor(x, y, name) { m_currentplayer = player; }
 	~Spawner();
 
 	void update(float deltaTime) override;
@@ -17,5 +18,6 @@ private:
 	float m_spawnCooldown = 2;
 
 	Actor* m_enemyspawn;
+	Player* m_currentplayer;
 };
 

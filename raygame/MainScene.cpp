@@ -15,7 +15,7 @@ void MainScene::start()
 	addActor(player);
 
 	//Adds Enemy and Targets the Player
-	Enemy* test = new Enemy(500, 50, "Enemy", "Rusher");
+	Enemy* test = new Enemy(500, 50, "Enemy", "Rusher", player);
 	addActor(test);
 	test->setTarget(player);
 
@@ -25,6 +25,6 @@ void MainScene::start()
 	goal->setCollider(new AABBCollider(goal));
 	goal->addComponent(new SpriteComponent("Images/player.png"));
 
-	Spawner* test23 = new Spawner(25, 25, "spawner");
+	Spawner* test23 = new Spawner(25, 25, "spawner", player);
 	addActor(test23);
 }
