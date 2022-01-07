@@ -7,6 +7,7 @@
 #include "AABBCollider.h"
 #include "CircleCollider.h"
 #include "raylib.h"
+#include "Spawner.h"
 
 void Enemy::start()
 {
@@ -59,7 +60,9 @@ void Enemy::update(float deltaTime)
 void Enemy::onCollision(Actor* other)
 {
 	if (other->getName() == "Sword" && m_type != "Sword")
+	{
 		Engine::destroy(this);
+	}
 	else if (other->getName() == "Sword" && m_swordComponent->getSword() != other)
 		Engine::destroy(this);
 }
