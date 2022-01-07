@@ -11,7 +11,7 @@ void Spawner::update(float deltaTime)
 	if (m_numberofenemies < 10 && m_timesincelastSpawn > m_spawnCooldown)
 	{
 		//Declares the enemy that wil be spawned
-			m_enemyspawn = new Enemy(10, 10, "Taco", "Rusher", Spawner::m_currentplayer);
+			m_enemyspawn = new Enemy(10, 10, "Enemy", "Rusher", Spawner::m_currentplayer);
 			m_enemyspawn->getTransform()->setScale({ 50,50 });
 
 			//Adds that enemy to the game
