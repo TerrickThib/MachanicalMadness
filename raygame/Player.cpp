@@ -36,9 +36,9 @@ void Player::update(float deltaTime)
 
 		if (m_inputComponent->actionInput())
 			m_swordComponent->swingSword();
-		m_swordComponent->update(deltaTime);
 	}
 	
+	m_swordComponent->update(deltaTime);
 	getCollider()->update();
 }
 
@@ -48,6 +48,10 @@ void Player::onCollision(Actor* other)
 		Engine::CloseApplication();
 	if(other->getName() == "Enemy")
 		Engine::CloseApplication();
+	if (other->getName() == "Sword")
+	{
+		Engine::CloseApplication();
+	}
 }
 
 void Player::draw()

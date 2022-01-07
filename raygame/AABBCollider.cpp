@@ -63,12 +63,6 @@ bool AABBCollider::checkCollisionAABB(AABBCollider* collider)
 	return false;
 }
 
-void AABBCollider::update()
-{
-	m_width = getOwner()->getTransform()->getScale().x;
-	m_height = getOwner()->getTransform()->getScale().y;
-}
-
 void AABBCollider::draw()
 {
 	RAYLIB_H::DrawRectangleLines(getLeft(), getTop(), m_width, m_height, RED);

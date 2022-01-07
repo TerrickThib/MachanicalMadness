@@ -2,6 +2,7 @@
 #include "Actor.h"
 class MoveComponent;
 class SpriteComponent;
+class SwordComponent;
 
 class Enemy :
 	public Actor
@@ -17,6 +18,7 @@ public:
 private:
 	MoveComponent* m_moveComponent;
 	SpriteComponent* m_spriteComponent;
+	SwordComponent* m_swordComponent;
 	const char* m_type;
 	Actor* m_target;
 };

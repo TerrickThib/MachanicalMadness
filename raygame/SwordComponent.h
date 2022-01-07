@@ -9,6 +9,7 @@ public:
 	SwordComponent(const char* name = "SwordComponent") : Component::Component(name) {};
 	void swingSword();
 	bool getInUse() { return m_inUse; }
+	Actor* getSword() { return m_sword; }
 
 	void start() override;
 	void update(float deltaTime) override;
@@ -20,7 +21,6 @@ public:
 	bool m_inUse;
 	SpriteComponent* m_sprite;
 	Actor* m_sword;
-	AABBCollider* m_collider;
-	float m_timer;
+	float m_timer = 0;
 };
 

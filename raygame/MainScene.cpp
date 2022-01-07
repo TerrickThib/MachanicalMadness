@@ -14,13 +14,13 @@ void MainScene::start()
 	addActor(player);
 
 	//Adds Enemy and Targets the Player
-	Enemy* test = new Enemy(500, 50, "Enemy", "Rusher");
+	Enemy* test = new Enemy(500, 50, "Enemy", "Sword");
 	addActor(test);
 	test->setTarget(player);
 
 	//Adds goal
-	/*Actor* goal = new Actor(50, 500, "Goal");
+	Actor* goal = new Actor(50, 500, "Goal");
 	addActor(goal);
 	goal->setCollider(new AABBCollider(goal));
-	goal->addComponent(new SpriteComponent("Images/player.png"));*/
+	goal->addComponent(new SpriteComponent("Images/player.png"));
 }
