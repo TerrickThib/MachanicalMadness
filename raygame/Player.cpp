@@ -4,7 +4,8 @@
 #include "SpriteComponent.h"
 #include "Engine.h"
 #include "Transform2D.h"
-#include "AABBCollider.h"
+#include "CircleCollider.h"
+#include "SwordComponent.h"
 
 void Player::start()
 {
@@ -12,11 +13,12 @@ void Player::start()
 
 	m_inputComponent = dynamic_cast<InputComponent*>(addComponent(new InputComponent()));
 	m_moveComponent = dynamic_cast<MoveComponent*>(addComponent(new MoveComponent()));
+	m_swordComponent = dynamic_cast<SwordComponent*>(addComponent(new SwordComponent()));
 	m_moveComponent->setMaxSpeed(10);
 	m_spriteComponent = dynamic_cast <SpriteComponent*>(addComponent(new SpriteComponent("Images/Robi.png")));
 
 	getTransform()->setScale({ 35,70 });
-	setCollider(new AABBCollider(this));
+	setCollider(new CircleCollider(15,this));
 	//Set spawn point
 	//Set Move speed
 	//Set position clamps
@@ -24,11 +26,20 @@ void Player::start()
 
 void Player::update(float deltaTime)
 {
-	Actor::update(deltaTime);
+	if (!m_swordComponent->getInUse())
+	{
+		Actor::update(deltaTime);
 
-	MathLibrary::Vector2 moveDirection = m_inputComponent->getMoveAxis();
+		MathLibrary::Vector2 moveDirection = m_inputComponent->getMoveAxis();
 
-	m_moveComponent->setVelocity(moveDirection * 200);
+		m_moveComponent->setVelocity(moveDirection * 200);
+
+		if (m_inputComponent->actionInput())
+			m_swordComponent->swingSword();
+	}
+	
+	m_swordComponent->update(deltaTime);
+	getCollider()->update();
 }
 
 void Player::onCollision(Actor* other)
@@ -37,6 +48,10 @@ void Player::onCollision(Actor* other)
 		Engine::CloseApplication();
 	if(other->getName() == "Enemy")
 		Engine::CloseApplication();
+	if (other->getName() == "Sword")
+	{
+		Engine::CloseApplication();
+	}
 }
 
 void Player::draw()

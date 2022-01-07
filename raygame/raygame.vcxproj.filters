@@ -65,6 +65,9 @@
     <ClCompile Include="Collider.cpp">
       <Filter>Colliders</Filter>
     </ClCompile>
+    <ClCompile Include="SwordComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene.h">
@@ -111,6 +114,9 @@
     </ClInclude>
     <ClInclude Include="Collider.h">
       <Filter>Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="SwordComponent.h">
+      <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

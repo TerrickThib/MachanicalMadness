@@ -3,6 +3,7 @@
 #include <string.h>
 #include "Collider.h"
 #include "Component.h"
+#include "raylib.h"
 #include <iostream>
 
 Actor::Actor()
@@ -179,6 +180,9 @@ void Actor::draw()
 {
     for (int i = 0; i < m_componentCount; i++)
         m_components[i]->draw();
+
+    if (IsKeyDown(KEY_TAB))
+        getCollider()->draw();
 }
 
 void Actor::end()

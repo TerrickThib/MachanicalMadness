@@ -11,6 +11,7 @@ public:
 	InputComponent(const char* name = "InputComponent") :Component::Component(name) {};
 
 	MathLibrary::Vector2 getMoveAxis();
+	bool actionInput();
 private:
 	RAYLIB_H::KeyboardKey m_action1Key = RAYLIB_H::KeyboardKey::KEY_SPACE;
 	RAYLIB_H::KeyboardKey m_action2Key = RAYLIB_H::KeyboardKey::KEY_P;
