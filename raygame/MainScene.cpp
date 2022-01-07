@@ -15,8 +15,8 @@ void MainScene::start()
 	addActor(player);
 
 	//Adds Enemy and Targets the Player
-	Enemy* test = new Enemy(500, 50, "Enemy", "Sword");
-	Enemy* test2 = new Enemy(50, 500, "Enemy", "Rusher");
+	Enemy* test = new Enemy(500, 50, "Enemy", "Sword", player);
+	Enemy* test2 = new Enemy(50, 500, "Enemy", "Rusher", player);
 	addActor(test);
 	addActor(test2);
 	test->setTarget(player);

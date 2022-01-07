@@ -42,7 +42,7 @@ void Player::update(float deltaTime)
 		m_moveComponent->setVelocity(moveDirection * m_moveComponent->getMaxSpeed());
 	}
 
-		if (m_inputComponent->actionInput())
+ 		if (m_inputComponent->actionInput())
 			m_swordComponent->swingSword();
 	}
 	
