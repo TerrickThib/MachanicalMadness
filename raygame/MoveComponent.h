@@ -32,10 +32,24 @@ public:
 	/// <param name="maxSpeed"></param>
 	void setMaxSpeed(float maxSpeed) { m_maxSpeed = maxSpeed; }
 
+	/// <summary>
+	/// Get the normal speed of this actors velocity vector
+	/// </summary>
+	/// <returns></returns>
+	float getSpeed() { return m_speed; }
+
+	/// <summary>
+	/// Set the normal speed of this actors velocity vector
+	/// </summary>
+	/// <param name="maxSpeed"></param>
+	void setSpeed(float speed) { m_speed = speed; }
+
 	void update(float deltaTime) override;
 
 private:
 	MathLibrary::Vector2 m_velocity;
 	float m_maxSpeed;
+	float m_speed;
+	MathLibrary::Vector2 m_accelration;
 };
 

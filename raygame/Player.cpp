@@ -13,15 +13,16 @@ void Player::start()
 
 	m_inputComponent = dynamic_cast<InputComponent*>(addComponent(new InputComponent()));
 	m_moveComponent = dynamic_cast<MoveComponent*>(addComponent(new MoveComponent()));
+	m_moveComponent->setMaxSpeed(200);
 	m_swordComponent = dynamic_cast<SwordComponent*>(addComponent(new SwordComponent()));
-	m_moveComponent->setMaxSpeed(10);
 	m_spriteComponent = dynamic_cast <SpriteComponent*>(addComponent(new SpriteComponent("Images/Robi.png")));
 
 	getTransform()->setScale({ 35,70 });
 	setCollider(new CircleCollider(15,this));
 	//Set spawn point
-	//Set Move speed
 	//Set position clamps
+	m_moveComponent->setSpeed(200);
+
 }
 
 void Player::update(float deltaTime)
@@ -32,7 +33,14 @@ void Player::update(float deltaTime)
 
 		MathLibrary::Vector2 moveDirection = m_inputComponent->getMoveAxis();
 
-		m_moveComponent->setVelocity(moveDirection * 200);
+	//Multiplys the movedirection with current speed to get Velocity
+	m_moveComponent->setVelocity(moveDirection * m_moveComponent->getSpeed());
+
+	//Caps the max speed the Actor can move
+	if (m_moveComponent->getVelocity().getMagnitude() >= m_moveComponent->getMaxSpeed())
+	{
+		m_moveComponent->setVelocity(moveDirection * m_moveComponent->getMaxSpeed());
+	}
 
 		if (m_inputComponent->actionInput())
 			m_swordComponent->swingSword();

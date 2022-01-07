@@ -6,6 +6,7 @@
 #include "Transform2D.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "Spawner.h"
 
 void MainScene::start()
 {
@@ -26,4 +27,7 @@ void MainScene::start()
 	addActor(goal);
 	goal->setCollider(new AABBCollider(goal));
 	goal->addComponent(new SpriteComponent("Images/player.png"));
+
+	Spawner* test23 = new Spawner(25, 25, "spawner", player);
+	addActor(test23);
 }

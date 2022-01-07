@@ -160,6 +160,7 @@
     <ClCompile Include="MoveComponent.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Spawner.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
     <ClCompile Include="SwordComponent.cpp" />
     <ClCompile Include="Transform2D.cpp" />
@@ -178,6 +179,7 @@
     <ClInclude Include="MoveComponent.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="Spawner.h" />
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="SwordComponent.h" />
     <ClInclude Include="Transform2D.h" />
