@@ -24,9 +24,10 @@ void MainScene::start()
 
 	//Adds goal
 	Actor* goal = new Actor(50, 500, "Goal");
+	goal->getTransform()->setScale({ 30, 30 });
 	addActor(goal);
 	goal->setCollider(new AABBCollider(goal));
-	goal->addComponent(new SpriteComponent("Images/player.png"));
+	goal->addComponent(new SpriteComponent("Images/VictoryPad.png"));
 
 	Spawner* test23 = new Spawner(25, 25, "spawner", player);
 	addActor(test23);

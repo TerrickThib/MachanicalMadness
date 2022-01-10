@@ -16,10 +16,15 @@ public:
 	void onCollision(Actor* other) override;
 	void draw() override;
 
+	bool getHasPowerUp() { return m_hasPowerUp; }
+	void setHasPowerUp(bool value) { m_hasPowerUp = value; }
+
 private:
 	InputComponent* m_inputComponent;
 	MoveComponent* m_moveComponent;
 	SpriteComponent* m_spriteComponent;
 	SwordComponent* m_swordComponent;
+	bool m_hasPowerUp;
+	float m_powerUpTimer;
 };
 
