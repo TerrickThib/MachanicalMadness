@@ -23,7 +23,7 @@ public:
 
     /// <returns> The transform attached to this actor.</returns>
     Transform2D* getTransform() { return m_transform; }
-
+    
     /// <summary>
     /// Gets the collider attached to this actor
     /// </summary>

@@ -7,6 +7,7 @@
 #include "AABBCollider.h"
 #include "CircleCollider.h"
 #include "SwordComponent.h"
+#include "raymath.h"
 
 void Player::start()
 {
@@ -14,7 +15,7 @@ void Player::start()
 
 	m_inputComponent = dynamic_cast<InputComponent*>(addComponent(new InputComponent()));
 	m_moveComponent = dynamic_cast<MoveComponent*>(addComponent(new MoveComponent()));
-	m_moveComponent->setMaxSpeed(200);
+	m_moveComponent->setMaxSpeed(1000);
 	m_swordComponent = dynamic_cast<SwordComponent*>(addComponent(new SwordComponent()));
 	m_spriteComponent = dynamic_cast <SpriteComponent*>(addComponent(new SpriteComponent("Images/Robi.png")));
 
@@ -22,7 +23,7 @@ void Player::start()
 	setCollider(new CircleCollider(15,this));
 	//Set spawn point
 	//Set position clamps
-	m_moveComponent->setSpeed(200);
+	m_moveComponent->setSpeed(100);
 
 }
 
@@ -46,6 +47,13 @@ void Player::update(float deltaTime)
  		if (m_inputComponent->actionInput())
 			m_swordComponent->swingSword();
 	}
+
+	//Clamps your position between two points and then sets your LOcal position to be resultX and resultY
+	float resultX = Clamp(getTransform()->getLocalPosition().x, 23, 685);
+	float resultY = Clamp(getTransform()->getLocalPosition().y, 23, 785);
+	getTransform()->setLocalPosition(MathLibrary::Vector2(resultX,resultY));
+
+	
 	m_swordComponent->update(deltaTime);
 
 	if (m_hasPowerUp)
