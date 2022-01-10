@@ -5,7 +5,7 @@ class OpeningScene :
 {
 public:
 	void start();
-	void update();
+	void update(float deltaTime) override;
 };
 
 
