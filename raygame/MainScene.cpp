@@ -24,7 +24,7 @@ void MainScene::start()
 	test2->setTarget(player);
 
 	//Adds goal
-	Actor* goal = new Actor(50, 500, "Goal");
+	Actor* goal = new Actor(350, 23, "Goal");
 	goal->getTransform()->setScale({ 30, 30 });
 	addActor(goal);
 	goal->setCollider(new AABBCollider(goal));
