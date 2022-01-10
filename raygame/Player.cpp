@@ -4,6 +4,7 @@
 #include "SpriteComponent.h"
 #include "Engine.h"
 #include "Transform2D.h"
+#include "AABBCollider.h"
 #include "CircleCollider.h"
 #include "SwordComponent.h"
 #include "raymath.h"
@@ -54,6 +55,20 @@ void Player::update(float deltaTime)
 
 	
 	m_swordComponent->update(deltaTime);
+
+	if (m_hasPowerUp)
+	{
+		//Check how long they have been powered up for
+		m_powerUpTimer += deltaTime;
+		m_swordComponent->getSword()->getTransform()->setScale({ 45,75 });
+		m_swordComponent->getSword()->setCollider(new AABBCollider(75,75,m_swordComponent->getSword()));
+		if (m_powerUpTimer >= 20)
+		{
+			m_hasPowerUp = false;
+			m_powerUpTimer = 0;
+		}
+	}
+
 	getCollider()->update();
 }
 
