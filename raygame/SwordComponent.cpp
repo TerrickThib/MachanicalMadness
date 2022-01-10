@@ -11,7 +11,7 @@ void SwordComponent::swingSword()
 {
 	m_inUse = true;
 	m_sword = new Actor(getOwner()->getTransform()->getLocalPosition().x + (getOwner()->getTransform()->getForward().x * 50), getOwner()->getTransform()->getLocalPosition().y + (getOwner()->getTransform()->getForward().y *50), "Sword");
-	m_sprite = dynamic_cast <SpriteComponent*>(m_sword->addComponent(new SpriteComponent("Images/Sword.png")));
+	m_sword->addComponent(new SpriteComponent("Images/Sword.png"));
 	m_sword->getTransform()->setScale({ 30, 50 });
 	m_sword->getTransform()->setForward({ getOwner()->getTransform()->getLocalPosition().x + getOwner()->getTransform()->getForward().x * 10000, getOwner()->getTransform()->getLocalPosition().y + getOwner()->getTransform()->getForward().y * 10000 });
 	if (getOwner()->getName() == "Player")

@@ -7,6 +7,8 @@
 #include "AABBCollider.h"
 #include "CircleCollider.h"
 #include "raylib.h"
+#include "Spawner.h"
+#include "PowerUp.h"
 
 void Enemy::start()
 {
@@ -59,9 +61,17 @@ void Enemy::update(float deltaTime)
 void Enemy::onCollision(Actor* other)
 {
 	if (other->getName() == "Sword" && m_type != "Sword")
+	{
 		Engine::destroy(this);
+	}
 	else if (other->getName() == "Sword" && m_swordComponent->getSword() != other)
+	{
+		PowerUp* swordUpgrade = new PowerUp(getTransform()->getLocalPosition().x, getTransform()->getLocalPosition().y);
+		swordUpgrade->getTransform()->setScale({ 25,25 });
+		swordUpgrade->setCollider(new AABBCollider(swordUpgrade));
+		Engine::getCurrentScene()->addActor(swordUpgrade);
 		Engine::destroy(this);
+	}
 }
 
 void Enemy::draw()

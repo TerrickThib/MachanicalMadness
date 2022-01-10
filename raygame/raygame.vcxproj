@@ -159,6 +159,7 @@
     <ClCompile Include="MainScene.cpp" />
     <ClCompile Include="MoveComponent.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PowerUp.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Spawner.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
@@ -178,6 +179,7 @@
     <ClInclude Include="MainScene.h" />
     <ClInclude Include="MoveComponent.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PowerUp.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Spawner.h" />
     <ClInclude Include="SpriteComponent.h" />
