@@ -6,6 +6,7 @@
 #include "Transform2D.h"
 #include "CircleCollider.h"
 #include "SwordComponent.h"
+#include "raymath.h"
 
 void Player::start()
 {
@@ -45,6 +46,12 @@ void Player::update(float deltaTime)
  		if (m_inputComponent->actionInput())
 			m_swordComponent->swingSword();
 	}
+
+	//Clamps your position between two points and then sets your LOcal position to be resultX and resultY
+	float resultX = Clamp(getTransform()->getLocalPosition().x, 23, 685);
+	float resultY = Clamp(getTransform()->getLocalPosition().y, 23, 785);
+	getTransform()->setLocalPosition(MathLibrary::Vector2(resultX,resultY));
+
 	
 	m_swordComponent->update(deltaTime);
 	getCollider()->update();
