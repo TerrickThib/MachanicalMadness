@@ -79,7 +79,7 @@ void Player::onCollision(Actor* other)
 	{
 		Scene* endScene = new Scene();
 		Engine::addScene(endScene);
-		Engine::setCurrentScene(1);
+		Engine::setCurrentScene(2);
 		UIText* win = new UIText(200, 350, "Test", BLUE, 340, 100, 40, "  TEST OVER Result: SUCCESS");
 		Engine::getCurrentScene()->addUIElement(win);
 	}
