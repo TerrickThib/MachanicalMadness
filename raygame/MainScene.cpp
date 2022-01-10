@@ -7,10 +7,10 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Spawner.h"
+#include "UIText.h"
 
 void MainScene::start()
 {
-
 	//Declares player, sets scale and adds Collider
 	Player* player = new Player(350, 750, "Player");
 	addActor(player);
