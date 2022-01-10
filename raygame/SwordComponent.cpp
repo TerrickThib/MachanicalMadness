@@ -20,7 +20,7 @@ void SwordComponent::swingSword()
 	}
 	else if (getOwner()->getName() == "Enemy")
 	{
-		m_sword->setCollider(new CircleCollider(25, m_sword));
+		m_sword->setCollider(new CircleCollider(35, m_sword));
 	}
 	Engine::getCurrentScene()->addActor(m_sword);
 }

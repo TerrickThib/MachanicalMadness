@@ -19,7 +19,7 @@ void MainScene::start()
 	Enemy* test = new Enemy(700, 700, "Enemy", "Sword", player);
 	Enemy* test2 = new Enemy(50, 500, "Enemy", "Rusher", player);
 	addActor(test);
-	addActor(test2);
+	addActor(test2);  
 	test->setTarget(player);
 	test2->setTarget(player);
 
