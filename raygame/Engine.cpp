@@ -1,7 +1,7 @@
 #include "Engine.h"
 #include "raylib.h"
 #include "Transform2D.h"
-#include "MainScene.h"
+#include "OpeningScene.h"
 
 bool Engine::m_applicationShouldClose = false;
 Scene** Engine::m_scenes = new Scene*;
@@ -29,7 +29,7 @@ void Engine::start()
 
 	
 	//Start the scene
-	m_currentSceneIndex = addScene(new MainScene());
+	m_currentSceneIndex = addScene(new OpeningScene());
 	m_scenes[m_currentSceneIndex]->start();
 }
 

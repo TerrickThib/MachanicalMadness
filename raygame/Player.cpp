@@ -8,6 +8,8 @@
 #include "CircleCollider.h"
 #include "SwordComponent.h"
 #include "raymath.h"
+#include "UIText.h"
+#include "Scene.h"
 
 void Player::start()
 {
@@ -64,8 +66,7 @@ void Player::update(float deltaTime)
 		m_swordComponent->getSword()->setCollider(new AABBCollider(75,75,m_swordComponent->getSword()));
 		if (m_powerUpTimer >= 20)
 		{
-			m_hasPowerUp = false;
-			m_powerUpTimer = 0;
+			resetPowerUp();
 		}
 	}
 
@@ -75,13 +76,23 @@ void Player::update(float deltaTime)
 void Player::onCollision(Actor* other)
 {
 	if (other->getName() == "Goal")
-		Engine::CloseApplication();
-	if(other->getName() == "Enemy")
-		Engine::CloseApplication();
-	if (other->getName() == "Sword" && m_swordComponent->getSword() != other)
 	{
-		Engine::CloseApplication();
+		Scene* endScene = new Scene();
+		Engine::addScene(endScene);
+		Engine::setCurrentScene(2);
+		UIText* win = new UIText(200, 350, "Test", BLUE, 340, 100, 40, "  TEST OVER Result: SUCCESS");
+		Engine::getCurrentScene()->addUIElement(win);
 	}
+
+	if (other->getName() == "Enemy" || other->getName() == "EnemySword")
+	{
+		Scene* endScene = new Scene();
+		Engine::addScene(endScene);
+		Engine::setCurrentScene(1);
+		UIText* lose = new UIText(225, 350, "Test", RED, 300, 100, 40, "  TEST OVER Result: FAILURE");
+		Engine::getCurrentScene()->addUIElement(lose);
+	}
+		
 }
 
 void Player::draw()
@@ -89,4 +100,10 @@ void Player::draw()
 	Actor::draw();
 	if (IsKeyDown(KEY_TAB))
 		getCollider()->draw();	
+}
+
+void Player::resetPowerUp()
+{
+	m_hasPowerUp = false;
+	m_powerUpTimer = 0;
 }

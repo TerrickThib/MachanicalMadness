@@ -10,6 +10,8 @@ class Player :
 {
 public:
 	Player(float x, float y, const char* name) : Actor(x, y, name) {}
+	~Player();
+
 	SwordComponent* getSwordComponent() { return m_swordComponent; }
 	void start() override;
 	void update(float deltaTime) override;
@@ -18,6 +20,8 @@ public:
 
 	bool getHasPowerUp() { return m_hasPowerUp; }
 	void setHasPowerUp(bool value) { m_hasPowerUp = value; }
+
+	void resetPowerUp();
 
 private:
 	InputComponent* m_inputComponent;

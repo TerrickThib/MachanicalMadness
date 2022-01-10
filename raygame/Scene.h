@@ -60,6 +60,8 @@ public:
     /// <param name="index">The index the actor is in the scene's array.</param>
     /// <returns>The desired actor.</returns>
     Actor* getActor(int index);
+    
+    int getActorCount() { return m_actorCount; }
 
     virtual void start();
 
