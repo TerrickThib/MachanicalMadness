@@ -10,12 +10,13 @@
 
 void MainScene::start()
 {
+
 	//Declares player, sets scale and adds Collider
-	Player* player = new Player(50, 50, "Player");
+	Player* player = new Player(350, 750, "Player");
 	addActor(player);
 
 	//Adds Enemy and Targets the Player
-	Enemy* test = new Enemy(500, 50, "Enemy", "Sword", player);
+	Enemy* test = new Enemy(700, 700, "Enemy", "Sword", player);
 	Enemy* test2 = new Enemy(50, 500, "Enemy", "Rusher", player);
 	addActor(test);
 	addActor(test2);
@@ -29,6 +30,7 @@ void MainScene::start()
 	goal->setCollider(new AABBCollider(goal));
 	goal->addComponent(new SpriteComponent("Images/VictoryPad.png"));
 
-	Spawner* test23 = new Spawner(25, 25, "spawner", player);
-	addActor(test23);
+	Spawner* spawner1 = new Spawner(50, 50, "spawner", player);
+	addActor(spawner1); 
+
 }
