@@ -7,10 +7,10 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Spawner.h"
+#include "UIText.h"
 
 void MainScene::start()
 {
-
 	//Declares player, sets scale and adds Collider
 	Player* player = new Player(350, 750, "Player");
 	addActor(player);
@@ -24,7 +24,7 @@ void MainScene::start()
 	test2->setTarget(player);
 
 	//Adds goal
-	Actor* goal = new Actor(50, 500, "Goal");
+	Actor* goal = new Actor(350, 100, "Goal");
 	goal->getTransform()->setScale({ 30, 30 });
 	addActor(goal);
 	goal->setCollider(new AABBCollider(goal));

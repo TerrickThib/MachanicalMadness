@@ -53,7 +53,7 @@ void Enemy::update(float deltaTime)
 		m_moveComponent->setVelocity(moveDirection * m_moveComponent->getSpeed());
 	}
 	
-	if (m_type == "Sword" && (getTransform()->getWorldPosition() - m_target->getTransform()->getWorldPosition()).getMagnitude() < 100 && !m_swordComponent->getInUse())
+	if (m_type == "Sword" && (getTransform()->getWorldPosition() - m_target->getTransform()->getWorldPosition()).getMagnitude() < 75 && !m_swordComponent->getInUse())
 	{
 		m_swordComponent->swingSword();
 	}
@@ -64,16 +64,19 @@ void Enemy::update(float deltaTime)
 
 void Enemy::onCollision(Actor* other)
 {
-	if (other->getName() == "Sword" && m_type != "Sword")
+	if (other->getName() == "PlayerSword")
 	{
-		Engine::destroy(this);
-	}
-	else if (other->getName() == "Sword" && m_swordComponent->getSword() != other)
-	{
-		PowerUp* swordUpgrade = new PowerUp(getTransform()->getLocalPosition().x, getTransform()->getLocalPosition().y);
-		swordUpgrade->getTransform()->setScale({ 25,25 });
-		swordUpgrade->setCollider(new AABBCollider(swordUpgrade));
-		Engine::getCurrentScene()->addActor(swordUpgrade);
+		if (m_type == "Sword")
+		{
+			int dropChance = rand() % 101;
+			if (dropChance <= 10)
+			{
+				PowerUp* swordUpgrade = new PowerUp(getTransform()->getLocalPosition().x, getTransform()->getLocalPosition().y);
+				swordUpgrade->getTransform()->setScale({ 25,25 });
+				swordUpgrade->setCollider(new AABBCollider(swordUpgrade));
+				Engine::getCurrentScene()->addActor(swordUpgrade);
+			}
+		}
 		Engine::destroy(this);
 	}
 }
