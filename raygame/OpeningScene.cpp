@@ -13,7 +13,7 @@ void OpeningScene::start()
 	addUIElement(Escape);
 }
 
-void OpeningScene::update()
+void OpeningScene::update(float deltaTime)
 {
 	if (Engine::getKeyPressed(KEY_ENTER))
 	{
