@@ -72,18 +72,35 @@ void Enemy::onCollision(Actor* other)
 	if (other->getName() == "PlayerSword")
 	{
 		//Have a chance to drop a Power Up
+		if (m_type == "Rusher")
+		{
+			int dropChance = rand() % 101;
+			if (dropChance <= 10 || Engine::getKeyDown(KEY_P))
+			{
+				//Declares the Power ups Varibles and Adds the POwer up to Current Scene
+				Actor* swordUpgrade = new Actor(getTransform()->getLocalPosition().x, getTransform()->getLocalPosition().y, "SpinBlade");
+				swordUpgrade->addComponent(new SpriteComponent("Images/Powerup.png"));
+				swordUpgrade->getTransform()->setScale({ 25,25 });
+				swordUpgrade->setCollider(new AABBCollider(swordUpgrade));
+				Engine::getCurrentScene()->addActor(swordUpgrade);
+			}
+		}
+
 		if (m_type == "Sword")
 		{
 			int dropChance = rand() % 101;
 			if (dropChance <= 25 || Engine::getKeyDown(KEY_P))
 			{
 				//Declares the Power ups Varibles and Adds the POwer up to Current Scene
-				PowerUp* swordUpgrade = new PowerUp(getTransform()->getLocalPosition().x, getTransform()->getLocalPosition().y);
+				Actor* swordUpgrade = new Actor(getTransform()->getLocalPosition().x, getTransform()->getLocalPosition().y, "BigSword");
+				swordUpgrade->addComponent(new SpriteComponent("Images/Powerup.png"));
 				swordUpgrade->getTransform()->setScale({ 25,25 });
 				swordUpgrade->setCollider(new AABBCollider(swordUpgrade));
 				Engine::getCurrentScene()->addActor(swordUpgrade);
 			}
 		}
+
+		//Decrement the Enemy Count and delete the enemy
 		m_spawner->setNumberOfEnemies(m_spawner->getNumberOfEnemies()-1);
 		Engine::destroy(this);
 	}
