@@ -69,7 +69,7 @@ void Enemy::onCollision(Actor* other)
 		if (m_type == "Sword")
 		{
 			int dropChance = rand() % 101;
-			if (dropChance <= 10 || Engine::getKeyDown(KEY_P))
+			if (dropChance <= 25 || Engine::getKeyDown(KEY_P))
 			{
 				PowerUp* swordUpgrade = new PowerUp(getTransform()->getLocalPosition().x, getTransform()->getLocalPosition().y);
 				swordUpgrade->getTransform()->setScale({ 25,25 });
