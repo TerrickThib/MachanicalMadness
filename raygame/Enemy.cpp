@@ -77,6 +77,7 @@ void Enemy::onCollision(Actor* other)
 				Engine::getCurrentScene()->addActor(swordUpgrade);
 			}
 		}
+		m_spawner->setNumberOfEnemies(m_spawner->getNumberOfEnemies()-1);
 		Engine::destroy(this);
 	}
 }

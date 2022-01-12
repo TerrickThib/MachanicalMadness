@@ -15,7 +15,7 @@ void OpeningScene::start()
 
 void OpeningScene::update(float deltaTime)
 {
-	if (Engine::getKeyPressed(KEY_ENTER))
+	if (Engine::getKeyDown(KEY_ENTER))
 	{
 		Engine::addScene(new MainScene());
 		Engine::setCurrentScene(1);
