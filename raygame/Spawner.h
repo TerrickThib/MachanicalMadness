@@ -20,7 +20,6 @@ public:
 private:
 	float m_numberOfEnemies = 0;
 	float m_timeSinceLastSpawn;
-	float m_spawnCooldown = 2;
 
 	Enemy* m_enemySpawn;
 	Player* m_currentPlayer;

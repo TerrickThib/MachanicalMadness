@@ -29,7 +29,7 @@ void Spawner::update(float deltaTime)
 {
 	m_timeSinceLastSpawn += deltaTime;
 
-	if (m_numberOfEnemies < 7  && m_timeSinceLastSpawn > m_spawnCooldown)
+	if (m_numberOfEnemies < 7  && m_timeSinceLastSpawn > 2)
 	{
 		//Declares the enemy that wil be spawned
 			m_enemySpawn = new Enemy(50, 100, "Enemy", "Rusher", Spawner::m_currentPlayer);
