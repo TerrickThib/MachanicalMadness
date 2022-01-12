@@ -17,15 +17,13 @@ void Player::start()
 
 	m_inputComponent = dynamic_cast<InputComponent*>(addComponent(new InputComponent()));
 	m_moveComponent = dynamic_cast<MoveComponent*>(addComponent(new MoveComponent()));
-	m_moveComponent->setMaxSpeed(1000);
+	m_moveComponent->setMaxSpeed(1000);//Sets a Max Speed 
 	m_swordComponent = dynamic_cast<SwordComponent*>(addComponent(new SwordComponent()));
 	m_spriteComponent = dynamic_cast <SpriteComponent*>(addComponent(new SpriteComponent("Images/Robi.png")));
 
-	getTransform()->setScale({ 35,70 });
-	setCollider(new CircleCollider(15,this));
-	//Set spawn point
-	//Set position clamps
-	m_moveComponent->setSpeed(100);
+	getTransform()->setScale({ 35,70 });//Sets the scale of the player
+	setCollider(new CircleCollider(15,this));//Sets the size of the colider
+	m_moveComponent->setSpeed(100);//Sets the movement speed of the player
 
 }
 
@@ -75,22 +73,32 @@ void Player::update(float deltaTime)
 
 void Player::onCollision(Actor* other)
 {
+	/// <summary>
+	/// If Player Collides with Goal Display Win Text
+	/// </summary>
 	if (other->getName() == "Goal")
 	{
 		Scene* endScene = new Scene();
 		Engine::addScene(endScene);
 		Engine::setCurrentScene(2);
-		UIText* win = new UIText(200, 350, "Test", BLUE, 340, 100, 40, "  TEST OVER Result: SUCCESS");
+		UIText* win = new UIText(225, 350, "Test", BLUE, 340, 100, 40, "  TEST OVER Result: SUCCESS");
+		UIText* escape = new UIText(225, 600, "Test", WHITE, 340, 100, 20, "Error Report 04F Recorded Illegal_Test_Report_Success.\nPlease press Esc to Leave");
 		Engine::getCurrentScene()->addUIElement(win);
+		Engine::getCurrentScene()->addUIElement(escape);
 	}
 
+	/// <summary>
+	/// If Player Collides with the enemy or enemys Sword Display Lose Text and chance Current Scene
+	/// </summary>
 	if (other->getName() == "Enemy" || other->getName() == "EnemySword")
 	{
 		Scene* endScene = new Scene();
 		Engine::addScene(endScene);
 		Engine::setCurrentScene(2);
 		UIText* lose = new UIText(225, 350, "Test", RED, 300, 100, 40, "  TEST OVER Result: FAILURE");
+		UIText* escape = new UIText(225,600, "Test", WHITE, 340, 100, 20, "Error Report 04G Recorded Illegal_Test_Report_Failure.\nPlease press Esc to Leave");
 		Engine::getCurrentScene()->addUIElement(lose);
+		Engine::getCurrentScene()->addUIElement(escape);
 		if (Engine::getKeyPressed(KEY_ENTER))
 		{
 			Engine::setCurrentScene(0);
@@ -98,7 +106,7 @@ void Player::onCollision(Actor* other)
 	}
 		
 }
-
+//Draws the Colliders if Tab is pressed
 void Player::draw()
 {
 	Actor::draw();
@@ -106,6 +114,7 @@ void Player::draw()
 		getCollider()->draw();	
 }
 
+//Resets the Power up
 void Player::resetPowerUp()
 {
 	m_hasPowerUp = false;

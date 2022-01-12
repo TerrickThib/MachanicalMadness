@@ -5,12 +5,14 @@
 #include "Transform2D.h"
 #include "raylib.h"
 
+//Allows for a collider to be called and set on a actor
 CircleCollider::CircleCollider(Actor* owner) : Collider::Collider(owner, ColliderType::CIRCLE)
 {
     MathLibrary::Vector2 size = getOwner()->getTransform()->getScale();
     m_collisionRadius = size.x > size.y ? size.x : size.y;
 }
 
+//Allows for a collider to be called and set on a actor
 CircleCollider::CircleCollider(float collisionRadius, Actor* owner) : Collider::Collider(owner, ColliderType::CIRCLE)
 {
     m_collisionRadius = collisionRadius;

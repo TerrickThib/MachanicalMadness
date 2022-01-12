@@ -11,8 +11,8 @@ public:
 	Spawner(float x, float y, const char* name, Player* player) : Actor(x, y, name) { m_currentPlayer = player; }
 	~Spawner();
 
-	float getNumberOfEnemies() { return m_numberOfEnemies; }
-	void setNumberOfEnemies(float newEnemyCount) { m_numberOfEnemies = newEnemyCount; }
+	float getNumberOfEnemies() { return m_numberOfEnemies; }//Gets the number of enemies in the game
+	void setNumberOfEnemies(float newEnemyCount) { m_numberOfEnemies = newEnemyCount; }//Sets the number of enemies 
 
 	void start() override;
 	void update(float deltaTime) override;
