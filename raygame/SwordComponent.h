@@ -11,11 +11,8 @@ public:
 	bool getInUse() { return m_inUse; }
 	Actor* getSword() { return m_sword; }
 
-	void start() override;
 	void update(float deltaTime) override;
-	void draw() override;
 	void end() override;
-	void onCollision(Actor* other) override;
 
  private:
 	bool m_inUse;
