@@ -1,81 +1,16 @@
-# raygame - sample project
+## Locate and open the Game Executable(.exe) to open the game.
+# How to Play
+W,A,S,D to move
+Press Space to use your Sword, but be careful, you can't move while attacking!
+Press Escape to Close the game, don't press it on accident! :)
 
-This is a sample C++ project setup with [raylib][raylib] for Visual
-Studio 2019. Raylib is a simple game programming framework that is designed to
-be friendly to beginners. It is created by [Ramon Santamaria
-(@raysan5)][raysan].
+# Goal
+You are particpating in a very offical and regular test. You control the robot, Robi. You're mission is simple, reach the Victory Pad at the top of the screen. However, don't think its too easy, enemies will try to stop you! Use your robot's sword to defeat them. Don't worry, they're replacable. 
 
-This version is compatible with any documentation referring to Raylib 3.0.
+Some of the enemies also have swords as well so don't get too close. Those enemies also can drop a Sword Upgrade, but only sometimes. You __Defenitely__ can't hold "P" down to make the powerup always drop. Its just doesn't work. Don't Try it. Nothing will happen. It is not a valid input. I know what you're thinking and you're wrong. Why am I even telling you this if there is no point to the "P" key? I don't know. I guess I just wanted to.
 
-It is primarily intended for use by students in the Game Programming course at
-the Seattle Campus of the Academy of Interactive Entertainment.
+# Noticable Bugs
+None, although the Sword Enemies will kill you on the first frame of thier sword animation, so you will not see it. Just keep that in mind when you die 'randomly', unless you actually do just die randomly. In this case, please inform us.
 
-[raylib]:https://github.com/raysan5/raylib
-[raysan]:https://github.com/raysan5
-
-## Getting Started
-
-To get started with this sample project, click the _Use this template_ button
-up top to copy this repository to your own account. Then, follow the
-instructions in the [Building](#building) section below.
-
-Once you've got it working, check out the cheatsheet for more information on
-the Raylib API or browse the example projects.
-
-**raylib links** - [website][rl-website] / [discord][rl-discord] / [reddit][rl-reddit] / [raylib repo][rl-repo] / [api reference][rl-cheatsheet], [examples][rl-examples]
-
-[rl-website]:https://www.raylib.com/
-[rl-discord]:https://discord.gg/VkzNHUE
-[rl-reddit]:https://www.reddit.com/r/raylib/
-[rl-repo]:https://github.com/raysan5/raylib/tree/3.0.0
-[rl-cheatsheet]:https://www.raylib.com/cheatsheet/cheatsheet.html
-[rl-examples]:https://www.raylib.com/examples.html
-[rl-examples-repo]:https://github.com/raysan5/raylib/tree/3.0.0/examples
-[rl-cs-bindings]:https://github.com/ChrisDill/Raylib-cs
-[rl-cs-bindings-ref]:https://github.com/ChrisDill/Raylib-cs/blob/master/Raylib-cs/Raylib.cs
-[rl-cs-examples]:https://github.com/ChrisDill/Raylib-cs-Examples
-
-## Building
-
-This project supports by **Visual Studio 2019** or newer.
-
-> **Property**          | **Value**
-> ----------------------|--------------------------------
-> Windows SDK Version   | 10.0 (latest installed version)
-> Platform Toolset      | Visual Studio 2019 (v142)
-> C++ Language Standard | ISO C++14 Standard (std:c++14)
-
-When building, please make sure that your installation of Visual Studio has
-the necessary components to compile this project, per the table above. If
-you get any errors, consult the table above and refer to [Microsoft Docs][msft-modify]
-to learn how to configure your installation appropriately.
-
-[msft-modify]:https://docs.microsoft.com/en-us/visualstudio/install/modify-visual-studio?view=vs-2019
-
-Clone the repository and open the solution in Visual Studio. Both the solution
-and project should already be configured and ready to start working with. To
-test this, build and run the provided sample project.
-
-![A screenshot of the included sample project](.github/raygame.png)
-
-The sample project that is provided is the [basic window example][basicexample]
-from raylib. Further examples can be found in its [repository][rl-examples-repo]
-or on the [website][rl-examples].
-
-You can review the [cheatsheet][rl-cheatsheet] for the full range of functions made
-available through raylib.
-
-[basicexample]:https://github.com/raysan5/raylib/tree/3.0.0/examples/core/core_basic_window.cpp
-[rayexamplesite]:https://www.raylib.com/examples.html
-
-## License
-
-MIT License - Copyright (c) 2018-2020 Academy of Interactive Entertainment
-
-For more information, see the [license][lic] file.
-
-Third party works are attributed under [thirdparty.md][3p].
-
-[lic]:license.md
-[3p]:thirdparty.md
-[raylib]:https://github.com/raysan5/raylib
+# Legal Issues
+We are not responsible for any activies perform in this game, as this test is complete legal and offical. Do not contact Robi Labs™ for further elaboration.
