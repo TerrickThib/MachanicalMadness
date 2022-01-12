@@ -3,6 +3,7 @@
 class MoveComponent;
 class SpriteComponent;
 class SwordComponent;
+class Spawner;
 
 class Enemy :
 	public Actor
@@ -17,11 +18,13 @@ public:
 	void draw() override;
 
 	void setTarget(Actor* target) { m_target = target; }
+	void setSpawner(Spawner* spawner) { m_spawner = spawner; }
 private:
 	MoveComponent* m_moveComponent;
 	SpriteComponent* m_spriteComponent;
 	SwordComponent* m_swordComponent;
 	const char* m_type;
 	Actor* m_target;
+	Spawner* m_spawner;
 };
 
