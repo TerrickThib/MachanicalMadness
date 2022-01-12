@@ -12,6 +12,3 @@ Some of the enemies also have swords as well so don't get too close. Those enemi
 # Noticable Bugs
 The ranged sword powerup's Hitbox is disjointed from its sprite, so it can hit or miss when the opposite should occur.
 While not a 'bug', the sword enemies will kill you on the first frame of their sword animation, so you will not see it. Just keep that in mind when you die 'randomly', unless you actually do just die randomly. In this case, please inform us.
-
-# Legal Issues
-We are not responsible for any activies perform in this game, as this test is complete legal and offical. Do not contact Robi Labs™ for further elaboration.
