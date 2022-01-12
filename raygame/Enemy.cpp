@@ -23,13 +23,12 @@ void Enemy::start()
 		setCollider(new CircleCollider(10, this));
 		m_moveComponent->setSpeed(200);
 	}
-	
-	else if (m_type == "Gunner")
+	/*else if (m_type == "Gunner")
 	{
 		m_spriteComponent = dynamic_cast <SpriteComponent*>(addComponent(new SpriteComponent("Images/MDU-Gunner.png")));
 		getTransform()->setScale({ 35,70 });
 		setCollider(new AABBCollider(this));
-	}
+	}*/
 	else if (m_type == "Sword")
 	{
 		m_spriteComponent = dynamic_cast <SpriteComponent*>(addComponent(new SpriteComponent("Images/MDU-Sword.png")));

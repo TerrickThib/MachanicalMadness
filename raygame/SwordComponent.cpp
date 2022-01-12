@@ -26,10 +26,6 @@ void SwordComponent::swingSword()
 	Engine::getCurrentScene()->addActor(m_sword);
 }
 
-void SwordComponent::start()
-{
-}
-
 void SwordComponent::update(float deltaTime)
 {
 	if (m_inUse)
@@ -47,16 +43,8 @@ void SwordComponent::update(float deltaTime)
 	}
 }
 
-void SwordComponent::draw()
-{
-}
 
 void SwordComponent::end()
 {
 	Engine::getCurrentScene()->removeActor(m_sword);
-}
-
-void SwordComponent::onCollision(Actor* other)
-{
-
 }
