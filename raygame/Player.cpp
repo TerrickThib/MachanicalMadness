@@ -25,6 +25,16 @@ void Player::start()
 	setCollider(new CircleCollider(15,this));//Sets the size of the colider
 	m_moveComponent->setSpeed(100);//Sets the movement speed of the player
 
+	Actor* child = new Actor(25, 25, "child1");
+	child->addComponent(new SpriteComponent("Images/bullet.png"));
+	Engine::getCurrentScene()->addActor(child);
+	this->getTransform()->addChild(child->getTransform());
+	child->getTransform()->setScale({ 25,25 });
+	child->getTransform()->setTranslation(-1, -1);
+
+	CircleCollider* childCollider = new CircleCollider(child);
+	child->setCollider(childCollider);
+	
 }
 
 void Player::update(float deltaTime)
