@@ -15,7 +15,7 @@ public:
     Transform2D(Actor* owner);
     ~Transform2D();
 
-   /// <returns>The current orientation of this actors z axis.</returns>
+    /// <returns>The current orientation of this actors z axis.</returns>
     MathLibrary::Vector2 getForward();
 
     /// <summary>
@@ -101,6 +101,8 @@ public:
     /// <param name="radians">The amount of radians to increase the rotation by</param>
     void rotate(float radians);
 
+    void setTranslation(float translationX, float translationY);
+
     /// <summary>
     /// Rotates the transform to face the given position
     /// </summary>
@@ -140,4 +142,3 @@ private:
     Actor* m_owner;
     bool m_shouldUpdateTransforms;
 };
-
