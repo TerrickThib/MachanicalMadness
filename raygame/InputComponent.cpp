@@ -10,6 +10,7 @@ MathLibrary::Vector2 InputComponent::getMoveAxis()
 	return MathLibrary::Vector2(moveDirectionX, moveDirectionY);
 }
 
+//If key is pressed return the key pressed
 bool InputComponent::actionInput()
 {
 	return RAYLIB_H::IsKeyPressed(m_action1Key);

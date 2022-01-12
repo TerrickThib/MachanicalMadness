@@ -6,6 +6,7 @@
 /// </summary>
 void UIText::draw()
 {
+    //Sets the Shape and size of the text box
     Rectangle textBox = Rectangle();
     textBox.x = getTransform()->getLocalPosition().x;
     textBox.y = getTransform()->getLocalPosition().y;

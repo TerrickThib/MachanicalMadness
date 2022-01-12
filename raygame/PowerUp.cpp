@@ -4,11 +4,12 @@
 
 void PowerUp::onCollision(Actor* other)
 {
+	//If you are the player 
 	if (other->getName() == "Player")
 	{
 		Player* player = (Player*)other;
-		player->resetPowerUp();
-		player->setHasPowerUp(true);
-		Engine::destroy(this);
+		player->resetPowerUp();//Resets if player has Power up
+		player->setHasPowerUp(true);//Sets player to have power up
+		Engine::destroy(this);//Deletes this power up from screen
 	}
 }

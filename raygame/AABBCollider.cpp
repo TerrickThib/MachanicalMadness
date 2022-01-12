@@ -5,12 +5,14 @@
 #include "raylib.h"
 #include <iostream>
 
+//Allows for a collider to be called and set on a actor
 AABBCollider::AABBCollider(Actor* owner) : Collider::Collider(owner, ColliderType::BOX)
 {
 	m_width = getOwner()->getTransform()->getScale().x;
 	m_height = getOwner()->getTransform()->getScale().y;
 }
 
+//Allows for a collider to be called and set on a actor
 AABBCollider::AABBCollider(float width, float height, Actor* owner) : Collider::Collider(owner, ColliderType::BOX)
 {
 	m_width = width;
@@ -63,6 +65,7 @@ bool AABBCollider::checkCollisionAABB(AABBCollider* collider)
 	return false;
 }
 
+//Drawns the colliders Hit box
 void AABBCollider::draw()
 {
 	RAYLIB_H::DrawRectangleLines(getLeft(), getTop(), m_width, m_height, RED);

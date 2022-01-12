@@ -22,6 +22,7 @@ void MainScene::start()
 	goal->setCollider(new AABBCollider(goal));
 	goal->addComponent(new SpriteComponent("Images/VictoryPad.png"));
 
+	//Adds the spawner
 	Spawner* spawner1 = new Spawner(50, 50, "spawner", player);
 	addActor(spawner1); 
 
