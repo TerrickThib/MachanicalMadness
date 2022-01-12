@@ -15,14 +15,6 @@ void MainScene::start()
 	Player* player = new Player(350, 750, "Player");
 	addActor(player);
 
-	//Adds Enemy and Targets the Player
-	Enemy* test = new Enemy(700, 700, "Enemy", "Sword", player);
-	Enemy* test2 = new Enemy(50, 500, "Enemy", "Rusher", player);
-	addActor(test);
-	addActor(test2);  
-	test->setTarget(player);
-	test2->setTarget(player);
-
 	//Adds goal
 	Actor* goal = new Actor(350, 23, "Goal");
 	goal->getTransform()->setScale({ 30, 30 });
