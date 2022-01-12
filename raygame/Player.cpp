@@ -25,16 +25,6 @@ void Player::start()
 	setCollider(new CircleCollider(15,this));//Sets the size of the colider
 	m_moveComponent->setSpeed(100);//Sets the movement speed of the player
 
-	Actor* child = new Actor(25, 25, "child1");
-	child->addComponent(new SpriteComponent("Images/bullet.png"));
-	Engine::getCurrentScene()->addActor(child);
-	this->getTransform()->addChild(child->getTransform());
-	child->getTransform()->setScale({ 25,25 });
-	child->getTransform()->setTranslation(-1, -1);
-
-	CircleCollider* childCollider = new CircleCollider(child);
-	child->setCollider(childCollider);
-	
 }
 
 void Player::update(float deltaTime)
@@ -114,7 +104,28 @@ void Player::onCollision(Actor* other)
 			Engine::setCurrentScene(0);
 		}
 	}
-		
+
+	else if (other->getName() == "BigSword")
+	{
+		resetPowerUp();//Resets if player has Power up
+		setHasPowerUp(true);//Sets player to have power up
+		Engine::destroy(other);//Deletes this power up from screen
+	}
+
+	else if (other->getName() == "SpinBlade")
+	{
+		Actor* sword = new Actor(0,0, "PlayerSword");
+		sword->addComponent(new SpriteComponent("Images/Sword.png"));
+		Engine::getCurrentScene()->addActor(sword);
+		getTransform()->addChild(sword->getTransform());
+		sword->getTransform()->setScale({ 30,50 });
+		sword->getTransform()->setTranslation(0.75f,1.5f);
+		sword->getTransform()->setForward({getTransform()->getLocalPosition().x, getTransform()->getLocalPosition().y + getTransform()->getForward().y * 10000 });
+
+		AABBCollider* childCollider = new AABBCollider(50,50,sword);
+		sword->setCollider(childCollider);
+		Engine::destroy(other);//Deletes this power up from screen
+	}
 }
 //Draws the Colliders if Tab is pressed
 void Player::draw()
