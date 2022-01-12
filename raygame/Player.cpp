@@ -91,6 +91,10 @@ void Player::onCollision(Actor* other)
 		Engine::setCurrentScene(2);
 		UIText* lose = new UIText(225, 350, "Test", RED, 300, 100, 40, "  TEST OVER Result: FAILURE");
 		Engine::getCurrentScene()->addUIElement(lose);
+		if (Engine::getKeyPressed(KEY_ENTER))
+		{
+			Engine::setCurrentScene(0);
+		}
 	}
 		
 }
