@@ -81,8 +81,10 @@ void Player::onCollision(Actor* other)
 		Scene* endScene = new Scene();
 		Engine::addScene(endScene);
 		Engine::setCurrentScene(2);
-		UIText* win = new UIText(200, 350, "Test", BLUE, 340, 100, 40, "  TEST OVER Result: SUCCESS");
+		UIText* win = new UIText(225, 350, "Test", BLUE, 340, 100, 40, "  TEST OVER Result: SUCCESS");
+		UIText* escape = new UIText(225, 600, "Test", WHITE, 340, 100, 20, "Error Report 04F Recorded Illegal_Test_Report_Success.\nPlease press Esc to Leave");
 		Engine::getCurrentScene()->addUIElement(win);
+		Engine::getCurrentScene()->addUIElement(escape);
 	}
 
 	/// <summary>
@@ -94,7 +96,9 @@ void Player::onCollision(Actor* other)
 		Engine::addScene(endScene);
 		Engine::setCurrentScene(2);
 		UIText* lose = new UIText(225, 350, "Test", RED, 300, 100, 40, "  TEST OVER Result: FAILURE");
+		UIText* escape = new UIText(225,600, "Test", WHITE, 340, 100, 20, "Error Report 04G Recorded Illegal_Test_Report_Failure.\nPlease press Esc to Leave");
 		Engine::getCurrentScene()->addUIElement(lose);
+		Engine::getCurrentScene()->addUIElement(escape);
 		if (Engine::getKeyPressed(KEY_ENTER))
 		{
 			Engine::setCurrentScene(0);
