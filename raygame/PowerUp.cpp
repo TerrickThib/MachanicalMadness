@@ -13,3 +13,14 @@ void PowerUp::onCollision(Actor* other)
 		Engine::destroy(this);//Deletes this power up from screen
 	}
 }
+
+void PowerUp::update(float deltaTime)
+{
+	m_timer += deltaTime;
+	if (m_timer >= 5)
+	{
+		m_spriteComponent->~SpriteComponent();
+		m_spriteComponent = nullptr;
+		Engine::destroy(this);
+	}
+}
