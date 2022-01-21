@@ -12,7 +12,6 @@ public:
 	Actor* getSword() { return m_sword; }
 
 	void update(float deltaTime) override;
-	void end() override;
 
  private:
 	bool m_inUse;

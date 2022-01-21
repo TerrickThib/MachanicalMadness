@@ -78,7 +78,7 @@ void Enemy::onCollision(Actor* other)
 			if (dropChance <= 10 || Engine::getKeyDown(KEY_P))
 			{
 				//Declares the Power ups Varibles and Adds the POwer up to Current Scene
-				Actor* swordUpgrade = new Actor(getTransform()->getLocalPosition().x, getTransform()->getLocalPosition().y, "SpinBlade");
+				PowerUp* swordUpgrade = new PowerUp(getTransform()->getLocalPosition().x, getTransform()->getLocalPosition().y, "SpinBlade");
 				swordUpgrade->addComponent(new SpriteComponent("Images/Powerup.png"));
 				swordUpgrade->getTransform()->setScale({ 25,25 });
 				swordUpgrade->setCollider(new AABBCollider(swordUpgrade));
@@ -92,7 +92,7 @@ void Enemy::onCollision(Actor* other)
 			if (dropChance <= 25 || Engine::getKeyDown(KEY_P))
 			{
 				//Declares the Power ups Varibles and Adds the POwer up to Current Scene
-				Actor* swordUpgrade = new Actor(getTransform()->getLocalPosition().x, getTransform()->getLocalPosition().y, "BigSword");
+				PowerUp* swordUpgrade = new PowerUp(getTransform()->getLocalPosition().x, getTransform()->getLocalPosition().y, "BigSword");
 				swordUpgrade->addComponent(new SpriteComponent("Images/Powerup.png"));
 				swordUpgrade->getTransform()->setScale({ 25,25 });
 				swordUpgrade->setCollider(new AABBCollider(swordUpgrade));
@@ -102,6 +102,11 @@ void Enemy::onCollision(Actor* other)
 
 		//Decrement the Enemy Count and delete the enemy
 		m_spawner->setNumberOfEnemies(m_spawner->getNumberOfEnemies()-1);
+		if(m_spriteComponent != nullptr)
+		m_spriteComponent->~SpriteComponent();
+		m_spriteComponent = nullptr;
+		m_moveComponent = nullptr;
+		m_swordComponent = nullptr;
 		Engine::destroy(this);
 	}
 }
