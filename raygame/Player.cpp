@@ -65,6 +65,9 @@ void Player::update(float deltaTime)
 		if (m_powerUpTimer >= 20)
 		{
 			resetPowerUp();
+			if(getTransform()->getChildCount() > 0)
+				for (int i = 0; i < getTransform()->getChildCount(); i++)
+					Engine::destroy(getTransform()->getChildren()[i]->getOwner());
 		}
 	}
 
@@ -124,6 +127,9 @@ void Player::onCollision(Actor* other)
 
 		AABBCollider* childCollider = new AABBCollider(50,50,sword);
 		sword->setCollider(childCollider);
+
+		resetPowerUp();//Resets if player has Power up
+		setHasPowerUp(true);//Sets player to have power up
 		Engine::destroy(other);//Deletes this power up from screen
 	}
 }
