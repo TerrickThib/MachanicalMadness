@@ -25,16 +25,6 @@ void Player::start()
 	setCollider(new CircleCollider(15,this));//Sets the size of the colider
 	m_moveComponent->setSpeed(100);//Sets the movement speed of the player
 
-	Actor* child = new Actor(25, 25, "child1");
-	child->addComponent(new SpriteComponent("Images/bullet.png"));
-	Engine::getCurrentScene()->addActor(child);
-	this->getTransform()->addChild(child->getTransform());
-	child->getTransform()->setScale({ 25,25 });
-	child->getTransform()->setTranslation(-1, -1);
-
-	CircleCollider* childCollider = new CircleCollider(child);
-	child->setCollider(childCollider);
-	
 }
 
 void Player::update(float deltaTime)
@@ -45,15 +35,14 @@ void Player::update(float deltaTime)
 
 		MathLibrary::Vector2 moveDirection = m_inputComponent->getMoveAxis();
 
-	//Multiplys the movedirection with current speed to get Velocity
+		//Multiplys the movedirection with current speed to get Velocity
 	m_moveComponent->setVelocity(moveDirection * m_moveComponent->getSpeed());
 
-	//Caps the max speed the Actor can move
-	if (m_moveComponent->getVelocity().getMagnitude() >= m_moveComponent->getMaxSpeed())
-	{
+		//Caps the max speed the Actor can move
+		if (m_moveComponent->getVelocity().getMagnitude() >= m_moveComponent->getMaxSpeed())
 		m_moveComponent->setVelocity(moveDirection * m_moveComponent->getMaxSpeed());
-	}
 
+		//Swings the sword, if the action input is pressed.
  		if (m_inputComponent->actionInput())
 			m_swordComponent->swingSword();
 	}
@@ -63,7 +52,7 @@ void Player::update(float deltaTime)
 	float resultY = Clamp(getTransform()->getLocalPosition().y, 23, 785);
 	getTransform()->setLocalPosition(MathLibrary::Vector2(resultX,resultY));
 
-	
+	//Update the sword
 	m_swordComponent->update(deltaTime);
 
 	if (m_hasPowerUp)
@@ -72,9 +61,15 @@ void Player::update(float deltaTime)
 		m_powerUpTimer += deltaTime;
 		m_swordComponent->getSword()->getTransform()->setScale({ 45,75 });
 		m_swordComponent->getSword()->setCollider(new AABBCollider(75,75,m_swordComponent->getSword()));
+
+		//If the power-up timer is run out
 		if (m_powerUpTimer >= 20)
 		{
+			//reset the power-up
 			resetPowerUp();
+			if(getTransform()->getChildCount() > 0)
+				for (int i = 0; i < getTransform()->getChildCount(); i++)
+					Engine::destroy(getTransform()->getChildren()[i]->getOwner());
 		}
 	}
 
@@ -91,8 +86,10 @@ void Player::onCollision(Actor* other)
 		Scene* endScene = new Scene();
 		Engine::addScene(endScene);
 		Engine::setCurrentScene(2);
-		UIText* win = new UIText(200, 350, "Test", BLUE, 340, 100, 40, "  TEST OVER Result: SUCCESS");
+		UIText* win = new UIText(225, 350, "Test", BLUE, 340, 100, 40, "  TEST OVER Result: SUCCESS");
+		UIText* escape = new UIText(225, 600, "Test", WHITE, 340, 100, 20, "Error Report 04F Recorded Illegal_Test_Report_Success.\nPlease press Esc to Leave");
 		Engine::getCurrentScene()->addUIElement(win);
+		Engine::getCurrentScene()->addUIElement(escape);
 	}
 
 	/// <summary>
@@ -104,13 +101,40 @@ void Player::onCollision(Actor* other)
 		Engine::addScene(endScene);
 		Engine::setCurrentScene(2);
 		UIText* lose = new UIText(225, 350, "Test", RED, 300, 100, 40, "  TEST OVER Result: FAILURE");
+		UIText* escape = new UIText(225,600, "Test", WHITE, 340, 100, 20, "Error Report 04G Recorded Illegal_Test_Report_Failure.\nPlease press Esc to Leave");
 		Engine::getCurrentScene()->addUIElement(lose);
+		Engine::getCurrentScene()->addUIElement(escape);
 		if (Engine::getKeyPressed(KEY_ENTER))
 		{
 			Engine::setCurrentScene(0);
 		}
 	}
-		
+
+	else if (other->getName() == "BigSword")
+	{
+		resetPowerUp();//Resets if player has Power up
+		setHasPowerUp(true);//Sets player to have power up
+		Engine::destroy(other);//Deletes this power up from screen
+	}
+
+	else if (other->getName() == "SpinBlade")
+	{
+		//Create a sword and child it to the Player
+		Actor* sword = new Actor(0,0, "PlayerSword");
+		sword->addComponent(new SpriteComponent("Images/Sword.png"));
+		Engine::getCurrentScene()->addActor(sword);
+		getTransform()->addChild(sword->getTransform());
+		sword->getTransform()->setScale({ 30,50 });
+		sword->getTransform()->setTranslation(0.75f,1.5f);
+		sword->getTransform()->setForward({getTransform()->getLocalPosition().x, getTransform()->getLocalPosition().y + getTransform()->getForward().y * 10000 });
+
+		AABBCollider* childCollider = new AABBCollider(50,50,sword);
+		sword->setCollider(childCollider);
+
+		resetPowerUp();//Resets if player has Power up
+		setHasPowerUp(true);//Sets player to have power up
+		Engine::destroy(other);//Deletes this power up from screen
+	}
 }
 //Draws the Colliders if Tab is pressed
 void Player::draw()

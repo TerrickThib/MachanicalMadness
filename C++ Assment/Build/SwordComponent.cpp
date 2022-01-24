@@ -23,8 +23,9 @@ void SwordComponent::swingSword()
 		m_sword->setCollider(new CircleCollider(25, m_sword));
 	}
 
-	//Sets the swords spriye and the scale of it and adds the sword to scene
-	m_sword->addComponent(new SpriteComponent("Images/Sword.png"));
+	//Sets the swords sprite and the scale of it and adds the sword to scene
+	m_sprite = new SpriteComponent("Images/Sword.png");
+	m_sword->addComponent(m_sprite);
 	m_sword->getTransform()->setScale({ 30, 50 });
 	m_sword->getTransform()->setForward({ getOwner()->getTransform()->getLocalPosition().x + getOwner()->getTransform()->getForward().x * 10000, getOwner()->getTransform()->getLocalPosition().y + getOwner()->getTransform()->getForward().y * 10000 });
 	Engine::getCurrentScene()->addActor(m_sword);
@@ -44,12 +45,7 @@ void SwordComponent::update(float deltaTime)
 	{
 		m_inUse = false;
 		m_timer = 0;
+		m_sprite->~SpriteComponent();
 		Engine::getCurrentScene()->removeActor(m_sword);
 	}
-}
-
-
-void SwordComponent::end()
-{
-	Engine::getCurrentScene()->removeActor(m_sword);
 }
