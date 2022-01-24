@@ -35,15 +35,14 @@ void Player::update(float deltaTime)
 
 		MathLibrary::Vector2 moveDirection = m_inputComponent->getMoveAxis();
 
-	//Multiplys the movedirection with current speed to get Velocity
+		//Multiplys the movedirection with current speed to get Velocity
 	m_moveComponent->setVelocity(moveDirection * m_moveComponent->getSpeed());
 
-	//Caps the max speed the Actor can move
-	if (m_moveComponent->getVelocity().getMagnitude() >= m_moveComponent->getMaxSpeed())
-	{
+		//Caps the max speed the Actor can move
+		if (m_moveComponent->getVelocity().getMagnitude() >= m_moveComponent->getMaxSpeed())
 		m_moveComponent->setVelocity(moveDirection * m_moveComponent->getMaxSpeed());
-	}
 
+		//Swings the sword, if the action input is pressed.
  		if (m_inputComponent->actionInput())
 			m_swordComponent->swingSword();
 	}
@@ -53,7 +52,7 @@ void Player::update(float deltaTime)
 	float resultY = Clamp(getTransform()->getLocalPosition().y, 23, 785);
 	getTransform()->setLocalPosition(MathLibrary::Vector2(resultX,resultY));
 
-	
+	//Update the sword
 	m_swordComponent->update(deltaTime);
 
 	if (m_hasPowerUp)
@@ -62,8 +61,11 @@ void Player::update(float deltaTime)
 		m_powerUpTimer += deltaTime;
 		m_swordComponent->getSword()->getTransform()->setScale({ 45,75 });
 		m_swordComponent->getSword()->setCollider(new AABBCollider(75,75,m_swordComponent->getSword()));
+
+		//If the power-up timer is run out
 		if (m_powerUpTimer >= 20)
 		{
+			//reset the power-up
 			resetPowerUp();
 			if(getTransform()->getChildCount() > 0)
 				for (int i = 0; i < getTransform()->getChildCount(); i++)
@@ -117,6 +119,7 @@ void Player::onCollision(Actor* other)
 
 	else if (other->getName() == "SpinBlade")
 	{
+		//Create a sword and child it to the Player
 		Actor* sword = new Actor(0,0, "PlayerSword");
 		sword->addComponent(new SpriteComponent("Images/Sword.png"));
 		Engine::getCurrentScene()->addActor(sword);

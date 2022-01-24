@@ -24,6 +24,7 @@ void Enemy::start()
 		setCollider(new CircleCollider(10, this));
 		m_moveComponent->setSpeed(200);
 	}
+
 	////Declares the stats/Varibles for a Gunner enemy
 	//else if (m_type == "Gunner")
 	//{
@@ -31,6 +32,7 @@ void Enemy::start()
 	//	getTransform()->setScale({ 35,70 });
 	//	setCollider(new AABBCollider(this));
 	//}
+
 	//Declaes the stats/Varibles for a Sword enemy
 	else if (m_type == "Sword")
 	{
@@ -44,11 +46,12 @@ void Enemy::start()
 
 void Enemy::update(float deltaTime)
 {
-	//If your a sword and your not using the sword or your not using the sword you follow the player
+	//If you do not have a sword, or it is not in use
 	if (m_type == "Sword" && !m_swordComponent->getInUse() || m_type != "Sword")
 	{
 		Actor::update(deltaTime);
 
+		//Move towards the target
 		MathLibrary::Vector2 moveDirection = (m_target->getTransform()->getWorldPosition() - getTransform()->getWorldPosition()).getNormalized();
 		getTransform()->setForward(moveDirection);
 
@@ -62,6 +65,7 @@ void Enemy::update(float deltaTime)
 		m_swordComponent->swingSword();
 	}
 
+	//If you have a sword, update it
 	if(m_type == "Sword")
 	m_swordComponent->update(deltaTime);
 }
