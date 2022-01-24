@@ -16,9 +16,13 @@ void PowerUp::onCollision(Actor* other)
 
 void PowerUp::update(float deltaTime)
 {
+	//Update the timer
 	m_timer += deltaTime;
+
+	//If the timer is done
 	if (m_timer >= 5)
 	{
+		//delete the Power-up
 		m_spriteComponent->~SpriteComponent();
 		m_spriteComponent = nullptr;
 		Engine::destroy(this);
